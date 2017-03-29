@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    .myDiv {
+        width: 300px;
+        height: 200px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        margin: 50px;
+        position: relative;
+    }
+    .topLine {
+        width: 0px;
+        height: 1px;
+        background: black;
+        position: absolute;
+        left: 0;
+        top: -1px;
+    }
+    
+    .bottomLine {
+        width: 0px;
+        height: 1px;
+        background: black;
+        position: absolute;
+        left: 300px;
+        bottom: -1px;
+    }
+    
+    .leftLine {
+        width: 1px;
+        height: 0px;
+        background: black;
+        position: absolute;
+        left: -1;
+        bottom: -1px;
+    }
+    
+    .rightLine {
+        width: 1px;
+        height: 0px;
+        background: black;
+        position: absolute;
+        right: -1px;
+        top: -1px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="myDiv">
+        <div class="topLine"></div>
+        <div class="rightLine"></div>
+        <div class="bottomLine"></div>
+        <div class="leftLine"></div>
+    </div>
+    <div class="myDiv">
+        <div class="topLine"></div>
+        <div class="rightLine"></div>
+        <div class="bottomLine"></div>
+        <div class="leftLine"></div>
+    </div>
+    <script type="text/javascript" src='http://libs.baidu.com/jquery/2.0.0/jquery.js'></script>
+    <script>
+    $(function() {
+        $(".myDiv").mouseover(function() {
+            $(this).find(".topLine").stop().animate({
+                "width": "300px"
+            },300);
+            var a=$(this);
+              setTimeout(function(){
+              a.find('.rightLine').animate({
+                'height': '200px',})
+            },500);
+              setTimeout(function(){
+              a.find('.bottomLine').animate({
+                'width': '300px',
+                'left':'0px',
+              })
+            },800);
+              setTimeout(function(){
+              a.find('.leftLine').animate({
+                'height': '200px',})
+            },1100);
+        })
+        $(".myDiv").mouseout(function() {
+            $(this).find(".leftLine").stop().animate({
+                "height": "0px"
+            },300);
+            var a=$(this);
+              setTimeout(function(){
+              a.find('.bottomLine').animate({
+                'left': '300px',
+                'width':'0px',
+                })
+            },500);
+              setTimeout(function(){
+              a.find('.rightLine').animate({
+                'height': '00px',
+              })
+            },800);
+              setTimeout(function(){
+              a.find('.topLine').animate({
+                'width': '0px',})
+            },1100);
+        })
+    })
+    </script>
+</body>
+
+</html>
